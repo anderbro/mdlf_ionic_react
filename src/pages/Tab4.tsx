@@ -32,12 +32,7 @@ const Home: React.FC = () => {
     const commInputRef = useRef<HTMLIonTextareaElement>(null);
 
 
-    const valSejour = sejourInputRef.current!.value;
-    const valChambre = chambreInputRef.current!.value;
-    const valRepas = repasInputRef.current!.value;
-    const valSpa = spaInputRef.current!.value;
-    const valactivites = activitesInputRef.current!.value;
-    const valComm = commInputRef.current!.value;
+    const valsejour = sejourInputRef.current!.value;
 
     const [text, setText] = useState('');
     const [value, setValue] = useState(0);
@@ -108,7 +103,7 @@ const Home: React.FC = () => {
                         <Link id="polit" to="/home">Politique de confidentialité </Link>
                     </div>
 
-                    <p> {valSejour}</p>
+                    <p> {valsejour}</p>
 
                 </IonGrid>
             </IonContent>

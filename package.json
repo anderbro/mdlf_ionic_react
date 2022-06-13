@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ionic/react": "^6.0.0",
-    "@ionic/react-router": "^6.0.0",
+    "@ionic/react": "^6.1.9",
+    "@ionic/react-router": "^6.1.9",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
@@ -61,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@types/babel__core": "^7.1.19",
     "react-scripts": "5.0.1"
   }
 }
