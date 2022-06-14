@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonImg, IonPage, IonRange, IonIcon, IonTextarea, IonGrid, IonCol } from '@ionic/react';
+import { IonContent, IonButton, IonImg, IonPage, IonRange, IonIcon, IonTextarea, IonGrid, IonCol, RangeCustomEvent, IonTitle, IonAlert } from '@ionic/react';
 import './style.css';
 
 
@@ -7,6 +7,7 @@ import React, { useRef, useState } from 'react';
 import { chevronBackOutline } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
 
+import Tot from '../components/Tot';
 
 
 
@@ -17,7 +18,10 @@ const Home: React.FC = () => {
 
 
 
-
+    const [error, setError] = useState<string>();
+    const clearError = () => {
+        setError('');
+    }
 
     const sus = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -31,13 +35,37 @@ const Home: React.FC = () => {
     const activitesInputRef = useRef<HTMLIonRangeElement>(null);
     const commInputRef = useRef<HTMLIonTextareaElement>(null);
 
+    const [tot, setTot] = useState<Number>();
+    const [comm, setComm] = useState<String>();
 
-    const valSejour = sejourInputRef.current!.value;
-    const valChambre = chambreInputRef.current!.value;
-    const valRepas = repasInputRef.current!.value;
-    const valSpa = spaInputRef.current!.value;
-    const valactivites = activitesInputRef.current!.value;
-    const valComm = commInputRef.current!.value;
+
+
+
+    const Comm = () => {
+        const valComm = commInputRef.current!.value;
+
+        const com = valComm?.toString();
+
+        setComm(com);
+
+    }
+
+    const CalculTot = () => {
+
+        const valSejour = sejourInputRef.current!.value;
+        const valChambre = chambreInputRef.current!.value;
+        const valRepas = repasInputRef.current!.value;
+        const valSpa = spaInputRef.current!.value;
+        const valactivites = activitesInputRef.current!.value;
+
+
+        const tot = +valChambre + +valSejour + +valRepas + +valSpa + +valactivites;
+
+        setTot(tot);
+
+    }
+
+
 
     const [text, setText] = useState('');
     const [value, setValue] = useState(0);
@@ -52,6 +80,7 @@ const Home: React.FC = () => {
 
         <IonPage>
 
+            <IonAlert isOpen={!!error} message={error} buttons={[{ text: 'Okay', handler: clearError => { } }]} />
 
             <IonContent>
 
@@ -104,11 +133,10 @@ const Home: React.FC = () => {
 
                     <div className='footer'>
                         <Link id="retour" to="/home">  <IonIcon slot="start" icon={chevronBackOutline} />  RETOUR</Link>
-                        <IonButton expand="full" color=" #a99462" className="butval" onClick={sus} routerLink='/tab1' > Valider</IonButton>
+                        <IonButton expand="full" color=" #a99462" className="butval" onClick={Comm}  > Valider  {console.log(comm)} </IonButton>
                         <Link id="polit" to="/home">Politique de confidentialité </Link>
                     </div>
 
-                    <p> {valSejour}</p>
 
                 </IonGrid>
             </IonContent>
