@@ -1,7 +1,8 @@
-import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonGrid } from '@ionic/react';
+import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonGrid, IonDatetime, IonLabel, IonPopover, IonText, IonModal } from '@ionic/react';
 import './style.css';
 
-
+import { calendar } from 'ionicons/icons';
+import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import React, { useRef, useState } from 'react';
 
 import { addOutline } from 'ionicons/icons';
@@ -13,8 +14,11 @@ import { addOutline } from 'ionicons/icons';
 
 const Home: React.FC = () => {
 
+    const [popoverDate, setPopoverDate] = useState('');
 
-
+    const formatDate = (value: string) => {
+        return format(parseISO(value), 'MMM dd yyyy');
+    };
 
     const sus = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -38,36 +42,59 @@ const Home: React.FC = () => {
 
 
 
-    const CA = () => {
+    // const CA = () => {
 
+    //     const valCa = caInputRef.current!.value;
+    //     const cafin = valCa?.toString();
+    //     setCa(cafin);
+    // }
+
+    // const ChambreName = () => {
+
+    //     const valChambreName = chambreNameInputRef.current!.value;
+    //     setChambreName(valChambreName);
+    // }
+    // const PaysClient = () => {
+
+    //     const valPaysClient = paysClientInputRef.current!.value;
+    //     setPaysClient(valPaysClient);
+    // }
+
+    // const NombrePers = () => {
+    //     const valNombrePers = nombrePersInputRef.current!.value;
+    //     setNombrePers(valNombrePers);
+    // }
+
+    // const Age = () => {
+
+    //     const valAge = ageInputRef.current!.value;
+    //     setAge(valAge);
+    // }
+
+    const Ajouter = () => {
+        // var o = new Io
+
+    }
+
+
+    const Infos = () => {
         const valCa = caInputRef.current!.value;
-        const cafin = valCa?.toString();
-        setCa(cafin);
-    }
-
-    const ChambreName = () => {
-
         const valChambreName = chambreNameInputRef.current!.value;
-        setChambreName(valChambreName);
-    }
-    const PaysClient = () => {
-
         const valPaysClient = paysClientInputRef.current!.value;
-        setPaysClient(valPaysClient);
-    }
-
-
-    const NombrePers = () => {
         const valNombrePers = nombrePersInputRef.current!.value;
-        setNombrePers(valNombrePers);
-    }
-
-    const Age = () => {
-
         const valAge = ageInputRef.current!.value;
-        setAge(valAge);
-    }
+        const cafin = valCa?.toString();
 
+
+        setAge(valAge);
+        setNombrePers(valNombrePers);
+        setPaysClient(valPaysClient);
+        setChambreName(valChambreName);
+        setCa(cafin);
+
+
+
+    }
 
     const options = {
         cssClass: 'my-custom-interface'
@@ -91,10 +118,36 @@ const Home: React.FC = () => {
 
                     <p className='titre1'>DURÉE DU SÉJOUR :</p>
 
-
-                    {/* <IonDatetime  pickerFormat="MMMM YYYY" ></IonDatetime>
-                    <IonIcon name="calendar-outline">calendrier</IonIcon> */}
-
+                    {/* Datetime in popover with cover element */}
+                    <IonRow>
+                        <IonCol>
+                            <IonItem button={true} id="open-date-input" className='calendar'>
+                                <IonLabel>{popoverDate}</IonLabel>
+                                <IonIcon icon={calendar} slot="end" />
+                                <IonPopover trigger="open-date-input" showBackdrop={false}>
+                                    <IonDatetime
+                                        presentation="date"
+                                        onIonChange={ev => setPopoverDate(formatDate(ev.detail.value!))}
+                                    />
+                                </IonPopover>
+                            </IonItem>
+                        </IonCol>
+                        <IonCol>
+                            <p className='titre1'> AU </p>
+                        </IonCol>
+                        <IonCol >
+                            <IonItem button={true} id="open-date-input2" className='calendar' >
+                                <IonLabel>{popoverDate}</IonLabel>
+                                <IonIcon icon={calendar} slot="end" />
+                                <IonPopover trigger="open-date-input2" showBackdrop={false}>
+                                    <IonDatetime
+                                        presentation="date"
+                                        onIonChange={ev => setPopoverDate(formatDate(ev.detail.value!))}
+                                    />
+                                </IonPopover>
+                            </IonItem>
+                        </IonCol>
+                    </IonRow>
 
 
                     <p className='titre'>CA TOTAL DU CLIENT :</p>
@@ -117,12 +170,12 @@ const Home: React.FC = () => {
                             </IonItem>
                         </IonCol>
                         <IonCol>
-                            <IonButton className='butplus' color="light "><IonIcon slot='start' icon={addOutline}></IonIcon></IonButton>
+                            <IonButton className='butplus' color="light " onClick={Ajouter}><IonIcon slot='start' icon={addOutline}></IonIcon></IonButton>
                         </IonCol>
                     </IonRow>
 
                     <p className='titre'>RAISON DU VOYAGE :</p>
-                    <IonRow>
+                    <IonRow >
                         <IonCol>
                             <IonButton expand="full" color=" #a99462" className="but" onClick={sus}  > Business</IonButton>
                         </IonCol>
@@ -176,7 +229,7 @@ const Home: React.FC = () => {
 
                     </IonRow>
 
-                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Age} routerLink={'/home'} > Valider {console.log(age)}</IonButton>
+                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos} routerLink={'/home'} > Valider {console.log(age, chambrename, paysClient, ca, nombrePers)}</IonButton>
 
 
 
