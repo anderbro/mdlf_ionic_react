@@ -2,7 +2,7 @@ import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, Ion
 import './style.css';
 
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { addOutline } from 'ionicons/icons';
 
@@ -12,26 +12,69 @@ import { addOutline } from 'ionicons/icons';
 
 
 const Home: React.FC = () => {
+
+
+
+
     const sus = async (e: React.FormEvent) => {
         e.preventDefault();
 
     }
 
-    const [chbre, setChbre] = useState<string>();
-    const [gender, setGender] = useState<string>();
-    const [hairColor, setHairColor] = useState<string>('brown');
-    const [value, setValue] = useState(0);
-    const [rangeValue, setRangeValue] = useState<{
-        lower: number;
-        upper: number;
-    }>({ lower: 0, upper: 0 });
+    const caInputRef = useRef<HTMLIonInputElement>(null);
+    const chambreNameInputRef = useRef<HTMLIonSelectElement>(null);
+    const paysClientInputRef = useRef<HTMLIonSelectElement>(null);
+    const nombrePersInputRef = useRef<HTMLIonSelectElement>(null);
+    const ageInputRef = useRef<HTMLIonSelectElement>(null);
+
+
+
+
+    const [chambrename, setChambreName] = useState<String>();
+    const [paysClient, setPaysClient] = useState<String>();
+    const [ca, setCa] = useState<String>();
+    const [nombrePers, setNombrePers] = useState<String>();
+    const [age, setAge] = useState<String>();
+
+
+
+    const CA = () => {
+
+        const valCa = caInputRef.current!.value;
+        const cafin = valCa?.toString();
+        setCa(cafin);
+    }
+
+    const ChambreName = () => {
+
+        const valChambreName = chambreNameInputRef.current!.value;
+        setChambreName(valChambreName);
+    }
+    const PaysClient = () => {
+
+        const valPaysClient = paysClientInputRef.current!.value;
+        setPaysClient(valPaysClient);
+    }
+
+
+    const NombrePers = () => {
+        const valNombrePers = nombrePersInputRef.current!.value;
+        setNombrePers(valNombrePers);
+    }
+
+    const Age = () => {
+
+        const valAge = ageInputRef.current!.value;
+        setAge(valAge);
+    }
+
 
     const options = {
         cssClass: 'my-custom-interface'
 
     }
 
-    const customFormatter = (value: number) => `${value}%`;
+
     return (
 
 
@@ -56,7 +99,7 @@ const Home: React.FC = () => {
 
                     <p className='titre'>CA TOTAL DU CLIENT :</p>
 
-                    <IonInput > </IonInput>
+                    <IonInput ref={caInputRef} > </IonInput>
 
 
 
@@ -64,7 +107,7 @@ const Home: React.FC = () => {
                     <IonRow>
                         <IonCol>
                             <IonItem className='select'>
-                                <IonSelect interface="popover" interfaceOptions={options} >
+                                <IonSelect interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption} >
                                     <IonSelectOption className='select' value="chambre 1">chambre 1</IonSelectOption>
 
                                     <IonSelectOption className='select' value="chambre 2">chambre 2</IonSelectOption>
@@ -81,15 +124,15 @@ const Home: React.FC = () => {
                     <p className='titre'>RAISON DU VOYAGE :</p>
                     <IonRow>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus} routerLink='/tab1' > Business</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus}  > Business</IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus} routerLink='/tab1' > Tourisme</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus}  > Tourisme</IonButton>
                         </IonCol>
                     </IonRow>
                     <p className='titre'>PAYS DE RESIDENCE DU CLIENT</p>
                     <IonItem>
-                        <IonSelect className='select' interface="popover" interfaceOptions={options} value={hairColor} >
+                        <IonSelect className='select' interface="popover" interfaceOptions={options} ref={paysClientInputRef} value={IonSelectOption}>
                             <IonSelectOption className='select' value="chambre 1">chambre 1</IonSelectOption>
                             <IonSelectOption className='select' value="chambre 2">chambre 2</IonSelectOption>
 
@@ -97,7 +140,7 @@ const Home: React.FC = () => {
                     </IonItem>
                     <p className='titre'>NOMBRE DE PERSONNES</p>
                     <IonItem>
-                        <IonSelect className='select' interface="popover" interfaceOptions={options} value={hairColor} >
+                        <IonSelect className='select' interface="popover" interfaceOptions={options} ref={nombrePersInputRef} value={IonSelectOption}>
                             <IonSelectOption className='select' value="1">1</IonSelectOption>
                             <IonSelectOption className='select' value="2">2</IonSelectOption>
                             <IonSelectOption className='select' value="3">3</IonSelectOption>
@@ -113,7 +156,7 @@ const Home: React.FC = () => {
                     <IonRow >
                         <IonCol>
                             <IonItem>
-                                <IonSelect className='select' interface="popover" interfaceOptions={options} value={hairColor} >
+                                <IonSelect ref={ageInputRef} value={IonSelectOption} className='select' interface="popover" interfaceOptions={options}  >
                                     <IonSelectOption className='select' value="18-30">18-30</IonSelectOption>
                                     <IonSelectOption className='select' value="30-45">30-45</IonSelectOption>
                                     <IonSelectOption className='select' value="45-60">45-60</IonSelectOption>
@@ -133,7 +176,7 @@ const Home: React.FC = () => {
 
                     </IonRow>
 
-                    <IonButton expand="full" color=" #a99462" className="butval" onClick={sus} routerLink='/tab1' > Valider</IonButton>
+                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Age} routerLink={'/home'} > Valider {console.log(age)}</IonButton>
 
 
 

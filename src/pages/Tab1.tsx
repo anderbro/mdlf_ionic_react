@@ -40,39 +40,34 @@ const Home: React.FC = () => {
 
 
 
-
-    const Comm = () => {
-        const valComm = commInputRef.current!.value;
-
-        const com = valComm?.toString();
-
-        setComm(com);
-
-    }
-
-    const CalculTot = () => {
+    const Tot = () => {
 
         const valSejour = sejourInputRef.current!.value;
         const valChambre = chambreInputRef.current!.value;
         const valRepas = repasInputRef.current!.value;
         const valSpa = spaInputRef.current!.value;
         const valactivites = activitesInputRef.current!.value;
+        const valComm = commInputRef.current!.value;
+
 
 
         const tot = +valChambre + +valSejour + +valRepas + +valSpa + +valactivites;
+        const com = valComm?.toString();
+
 
         setTot(tot);
+        setComm(com);
 
     }
 
 
 
     const [text, setText] = useState('');
-    const [value, setValue] = useState(0);
-    const [rangeValue, setRangeValue] = useState<{
-        lower: number;
-        upper: number;
-    }>({ lower: 0, upper: 0 });
+    // const [value, setValue] = useState(0);
+    // const [rangeValue, setRangeValue] = useState<{
+    //     lower: number;
+    //     upper: number;
+    // }>({ lower: 0, upper: 0 });
 
     const customFormatter = (value: number) => `${value}`;
     return (
@@ -133,7 +128,7 @@ const Home: React.FC = () => {
 
                     <div className='footer'>
                         <Link id="retour" to="/home">  <IonIcon slot="start" icon={chevronBackOutline} />  RETOUR</Link>
-                        <IonButton expand="full" color=" #a99462" className="butval" onClick={Comm}  > Valider  {console.log(comm)} </IonButton>
+                        <IonButton expand="full" color=" #a99462" className="butval" onClick={Tot} routerLink={'/thanx'}> Valider  {console.log(comm)} {console.log(tot)} </IonButton>
                         <Link id="polit" to="/home">Politique de confidentialité </Link>
                     </div>
 
