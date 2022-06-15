@@ -8,7 +8,8 @@
 
 .calendar {
 
-    font-size: 150%;
+    border: solid 2px #a99462;
+    font-size: 140%;
     text-align: center;
     color: #a99462;
 }
@@ -144,7 +145,40 @@ ion-range {
     padding-top: 5%;
 }
 
+.select {
+    color: #a99462;
+
+    height: auto;
+    width: 100%;
+    border: solid 2px #a99462;
+
+}
+
+.select1 {
+    color: #a99462;
+    border: 2px solid #a99462;
+    width: 100%;
+    text-align: center;
+}
+
+.select2 {
+
+    color: #a99462;
+    border: 2px solid #a99462;
+    text-align: center;
+}
+
+.plus {
+
+    padding: auto;
+    align-items: flex-start;
+    border: red solid 2px;
+}
+
 .butplus {
+    border: solid 2px #a99462;
+
+    margin-top: 0;
     background-color: white;
 }
 
@@ -188,8 +222,9 @@ a {
 
 
 
+
 ion-select-option {
-    border: #a99462 1px solid;
+
     font-size: 200%;
 }
 

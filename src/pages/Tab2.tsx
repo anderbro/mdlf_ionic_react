@@ -15,6 +15,7 @@ import { addOutline } from 'ionicons/icons';
 const Home: React.FC = () => {
 
     const [popoverDate, setPopoverDate] = useState('');
+    const [popoverDate2, setPopoverDate2] = useState('');
 
     const formatDate = (value: string) => {
         return format(parseISO(value), 'MMM dd yyyy');
@@ -25,6 +26,8 @@ const Home: React.FC = () => {
 
     }
 
+    const date1InputRef = useRef<HTMLIonDatetimeElement>(null);
+    const date2InputRef = useRef<HTMLIonDatetimeElement>(null);
     const caInputRef = useRef<HTMLIonInputElement>(null);
     const chambreNameInputRef = useRef<HTMLIonSelectElement>(null);
     const paysClientInputRef = useRef<HTMLIonSelectElement>(null);
@@ -71,6 +74,11 @@ const Home: React.FC = () => {
     //     setAge(valAge);
     // }
 
+    const Sexe = () => {
+        // const bouton
+
+    }
+
     const Ajouter = () => {
         // var o = new Io
 
@@ -84,6 +92,7 @@ const Home: React.FC = () => {
         const valNombrePers = nombrePersInputRef.current!.value;
         const valAge = ageInputRef.current!.value;
         const cafin = valCa?.toString();
+
 
 
         setAge(valAge);
@@ -118,7 +127,7 @@ const Home: React.FC = () => {
 
                     <p className='titre1'>DURÉE DU SÉJOUR :</p>
 
-                    {/* Datetime in popover with cover element */}
+
                     <IonRow>
                         <IonCol>
                             <IonItem button={true} id="open-date-input" className='calendar'>
@@ -128,6 +137,7 @@ const Home: React.FC = () => {
                                     <IonDatetime
                                         presentation="date"
                                         onIonChange={ev => setPopoverDate(formatDate(ev.detail.value!))}
+                                        ref={date1InputRef}
                                     />
                                 </IonPopover>
                             </IonItem>
@@ -137,12 +147,13 @@ const Home: React.FC = () => {
                         </IonCol>
                         <IonCol >
                             <IonItem button={true} id="open-date-input2" className='calendar' >
-                                <IonLabel>{popoverDate}</IonLabel>
+                                <IonLabel>{popoverDate2}</IonLabel>
                                 <IonIcon icon={calendar} slot="end" />
                                 <IonPopover trigger="open-date-input2" showBackdrop={false}>
                                     <IonDatetime
                                         presentation="date"
-                                        onIonChange={ev => setPopoverDate(formatDate(ev.detail.value!))}
+                                        onIonChange={ev => setPopoverDate2(formatDate(ev.detail.value!))}
+                                        ref={date2InputRef}
                                     />
                                 </IonPopover>
                             </IonItem>
@@ -157,13 +168,14 @@ const Home: React.FC = () => {
 
 
                     <p className='titre'>NOM DE(S) CHAMBRE(S)   </p>
-                    <IonRow>
+                    <IonRow className='plus'>
                         <IonCol>
                             <IonItem className='select'>
-                                <IonSelect interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption} >
-                                    <IonSelectOption className='select' value="chambre 1">chambre 1</IonSelectOption>
+                                <IonLabel></IonLabel>
+                                <IonSelect slot='start' interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption}  >
+                                    <IonSelectOption value="chambre 1" slot='start'>chambre 1</IonSelectOption>
 
-                                    <IonSelectOption className='select' value="chambre 2">chambre 2</IonSelectOption>
+                                    <IonSelectOption value="chambre 2">chambre 2</IonSelectOption>
 
                                 </IonSelect>
 
@@ -184,61 +196,63 @@ const Home: React.FC = () => {
                         </IonCol>
                     </IonRow>
                     <p className='titre'>PAYS DE RESIDENCE DU CLIENT</p>
-                    <IonItem>
-                        <IonSelect className='select' interface="popover" interfaceOptions={options} ref={paysClientInputRef} value={IonSelectOption}>
-                            <IonSelectOption className='select' value="chambre 1">chambre 1</IonSelectOption>
-                            <IonSelectOption className='select' value="chambre 2">chambre 2</IonSelectOption>
+                    <IonItem className='select1' >
+                        <IonSelect interface="popover" interfaceOptions={options} ref={paysClientInputRef} value={IonSelectOption}>
+                            <IonSelectOption value="chambre 1" >chambre 1</IonSelectOption>
+                            <IonSelectOption value="chambre 2">chambre 2</IonSelectOption>
 
                         </IonSelect>
                     </IonItem>
                     <p className='titre'>NOMBRE DE PERSONNES</p>
-                    <IonItem>
-                        <IonSelect className='select' interface="popover" interfaceOptions={options} ref={nombrePersInputRef} value={IonSelectOption}>
-                            <IonSelectOption className='select' value="1">1</IonSelectOption>
-                            <IonSelectOption className='select' value="2">2</IonSelectOption>
-                            <IonSelectOption className='select' value="3">3</IonSelectOption>
-                            <IonSelectOption className='select' value="4">4</IonSelectOption>
-                            <IonSelectOption className='select' value="5">5</IonSelectOption>
-                            <IonSelectOption className='select' value="6">6</IonSelectOption>
+                    <IonRow>
+                        <IonItem className='select1'>
+                            <IonSelect slot='start' interface="popover" interfaceOptions={options} ref={nombrePersInputRef} value={IonSelectOption}>
+                                <IonSelectOption value="1">1</IonSelectOption>
+                                <IonSelectOption value="2">2</IonSelectOption>
+                                <IonSelectOption value="3">3</IonSelectOption>
+                                <IonSelectOption value="4">4</IonSelectOption>
+                                <IonSelectOption value="5">5</IonSelectOption>
+                                <IonSelectOption value="6">6</IonSelectOption>
 
 
 
-                        </IonSelect>
-                    </IonItem>
+                            </IonSelect>
+                        </IonItem>
+                    </IonRow>
                     <p className='titre'>TRANCHES D’ÂGE(S) ET SEXE(S) :</p>
                     <IonRow >
                         <IonCol>
-                            <IonItem>
-                                <IonSelect ref={ageInputRef} value={IonSelectOption} className='select' interface="popover" interfaceOptions={options}  >
-                                    <IonSelectOption className='select' value="18-30">18-30</IonSelectOption>
-                                    <IonSelectOption className='select' value="30-45">30-45</IonSelectOption>
-                                    <IonSelectOption className='select' value="45-60">45-60</IonSelectOption>
-                                    <IonSelectOption className='select' value="60-75">60-75</IonSelectOption>
-                                    <IonSelectOption className='select' value="75+">75+</IonSelectOption>
+                            <IonItem className='select2'>
+                                <IonSelect ref={ageInputRef} value={IonSelectOption} interface="popover" interfaceOptions={options}  >
+                                    <IonSelectOption value="18-30">18-30</IonSelectOption>
+                                    <IonSelectOption value="30-45">30-45</IonSelectOption>
+                                    <IonSelectOption value="45-60">45-60</IonSelectOption>
+                                    <IonSelectOption value="60-75">60-75</IonSelectOption>
+                                    <IonSelectOption value="75+">75+</IonSelectOption>
 
 
                                 </IonSelect>
                             </IonItem>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus} routerLink='/tab1' > H </IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" id="but1" onClick={Sexe} > H </IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus} routerLink='/tab1' > F </IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" id="but2" onClick={Sexe} > F </IonButton>
                         </IonCol>
 
                     </IonRow>
 
-                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos} routerLink={'/home'} > Valider {console.log(age, chambrename, paysClient, ca, nombrePers)}</IonButton>
+                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos}  > Valider {console.log(age, chambrename, paysClient, ca, nombrePers, popoverDate, popoverDate2)}</IonButton>
 
 
 
 
 
-                </IonGrid>
+                </IonGrid >
 
 
-            </IonContent>
+            </IonContent >
         </IonPage >
     );
 };
