@@ -39,7 +39,7 @@ const Home: React.FC = () => {
 
     const [chambrename, setChambreName] = useState<String>();
     const [paysClient, setPaysClient] = useState<String>();
-    const [ca, setCa] = useState<String>();
+    const [ca, setCa] = useState<number>();
     const [nombrePers, setNombrePers] = useState<String>();
     const [age, setAge] = useState<String>();
 
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
     // const CA = () => {
 
     //     const valCa = caInputRef.current!.value;
-    //     const cafin = valCa?.toString();
+    //     const cafin = +valCa;
     //     setCa(cafin);
     // }
 
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         const valPaysClient = paysClientInputRef.current!.value;
         const valNombrePers = nombrePersInputRef.current!.value;
         const valAge = ageInputRef.current!.value;
-        const cafin = valCa?.toString();
+        // const cafin = +valCa; //bug ne prend pas valCa??
 
 
 
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
         setNombrePers(valNombrePers);
         setPaysClient(valPaysClient);
         setChambreName(valChambreName);
-        setCa(cafin);
+        // setCa(valCa);
 
 
 
@@ -163,7 +163,7 @@ const Home: React.FC = () => {
 
                     <p className='titre'>CA TOTAL DU CLIENT :</p>
 
-                    <IonInput ref={caInputRef} > </IonInput>
+                    <IonInput type='number' ref={caInputRef} > </IonInput>
 
 
 
@@ -173,7 +173,7 @@ const Home: React.FC = () => {
                             <IonItem className='select'>
                                 <IonLabel></IonLabel>
                                 <IonSelect slot='start' interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption}  >
-                                    <IonSelectOption value="chambre 1" slot='start'>chambre 1</IonSelectOption>
+                                    <IonSelectOption value="chambre 1" >chambre 1</IonSelectOption>
 
                                     <IonSelectOption value="chambre 2">chambre 2</IonSelectOption>
 

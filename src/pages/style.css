@@ -147,9 +147,9 @@ ion-range {
 
 .select {
     color: #a99462;
-
+    padding: 0;
     height: auto;
-    width: 100%;
+    width: 160%;
     border: solid 2px #a99462;
 
 }
@@ -172,12 +172,12 @@ ion-range {
 
     padding: auto;
     align-items: flex-start;
-    border: red solid 2px;
+
 }
 
 .butplus {
     border: solid 2px #a99462;
-
+    margin-left: 70%;
     margin-top: 0;
     background-color: white;
 }

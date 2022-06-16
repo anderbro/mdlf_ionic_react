@@ -50,7 +50,6 @@ const Home: React.FC = () => {
         const valComm = commInputRef.current!.value;
 
 
-
         const tot = +valChambre + +valSejour + +valRepas + +valSpa + +valactivites;
         const com = valComm?.toString();
 
