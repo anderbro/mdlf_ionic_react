@@ -74,14 +74,49 @@ const Home: React.FC = () => {
     //     setAge(valAge);
     // }
 
+
+
     const Sexe = () => {
+
+        var sexe = document.querySelector("#but1");
+        // sexe.style = "backgroundcolor:red;"
+
+
+        //garde la valeur du bouton sélectionné
         // const bouton
 
     }
 
     const Ajouter = () => {
-        // var o = new Io
+        // quand on clique sur le plus, rajoute la meme ligne en dessous
 
+    }
+
+    const Ajouter2 = () => {
+
+        // var i=1;
+        // while(i < nombrePers){
+
+        //     ajoute  <IonCol>
+        //     <IonItem className='select2'>
+        //         <IonSelect ref={ageInputRef} value={IonSelectOption} interface="popover" interfaceOptions={options}  >
+        //             <IonSelectOption value="18-30">18-30</IonSelectOption>
+        //             <IonSelectOption value="30-45">30-45</IonSelectOption>
+        //             <IonSelectOption value="45-60">45-60</IonSelectOption>
+        //             <IonSelectOption value="60-75">60-75</IonSelectOption>
+        //             <IonSelectOption value="75+">75+</IonSelectOption>
+
+
+        //         </IonSelect>
+        //     </IonItem>
+        // </IonCol>
+
+        // }
+
+
+        // on récupere la valeur du nombre de personnes et on rajoute autant de lignes sexe/age
+        // que cette valeur,
+        // 
     }
 
 
