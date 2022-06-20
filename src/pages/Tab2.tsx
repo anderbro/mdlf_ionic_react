@@ -78,10 +78,23 @@ const Home: React.FC = () => {
 
     const Sexe = () => {
 
-        var sexe = document.querySelector("#but1");
+        const sexe1 = document.querySelector("#but1");
+        const sexe2 = document.querySelector("#but2");
+
+
+        if (sexe1?.getAttribute("id") == "but1") {
+
+            sexe2?.setAttribute("id", "but2")
+            sexe1?.setAttribute("id", "butv");
+        }
+
+        else if (sexe2?.getAttribute("id") == "but2") {
+
+            sexe1?.setAttribute("id", "but1");
+            sexe2?.setAttribute("id", "butv");
+        }
+
         // sexe.style = "backgroundcolor:red;"
-
-
         //garde la valeur du bouton sélectionné
         // const bouton
 
@@ -93,6 +106,9 @@ const Home: React.FC = () => {
     }
 
     const Ajouter2 = () => {
+        const pro = document.querySelector("#busi");
+
+        pro?.setAttribute("id", "butv")
 
         // var i=1;
         // while(i < nombrePers){
@@ -110,7 +126,7 @@ const Home: React.FC = () => {
         //         </IonSelect>
         //     </IonItem>
         // </IonCol>
-
+        //  i+=1
         // }
 
 
@@ -206,8 +222,7 @@ const Home: React.FC = () => {
                     <IonRow className='plus'>
                         <IonCol>
                             <IonItem className='select'>
-                                <IonLabel></IonLabel>
-                                <IonSelect slot='start' interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption}  >
+                                <IonSelect className='slct1' slot='start' interface="popover" interfaceOptions={options} ref={chambreNameInputRef} value={IonSelectOption}  >
                                     <IonSelectOption value="chambre 1" >chambre 1</IonSelectOption>
 
                                     <IonSelectOption value="chambre 2">chambre 2</IonSelectOption>
@@ -224,15 +239,15 @@ const Home: React.FC = () => {
                     <p className='titre'>RAISON DU VOYAGE :</p>
                     <IonRow >
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus}  > Business</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter2} id="Busi" > Business</IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={sus}  > Tourisme</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter2} id="Tou" > Tourisme</IonButton>
                         </IonCol>
                     </IonRow>
                     <p className='titre'>PAYS DE RESIDENCE DU CLIENT</p>
                     <IonItem className='select1' >
-                        <IonSelect interface="popover" interfaceOptions={options} ref={paysClientInputRef} value={IonSelectOption}>
+                        <IonSelect className='slct' interface="popover" interfaceOptions={options} ref={paysClientInputRef} value={IonSelectOption}>
                             <IonSelectOption value="chambre 1" >chambre 1</IonSelectOption>
                             <IonSelectOption value="chambre 2">chambre 2</IonSelectOption>
 
@@ -240,8 +255,9 @@ const Home: React.FC = () => {
                     </IonItem>
                     <p className='titre'>NOMBRE DE PERSONNES</p>
                     <IonRow>
+                        <IonLabel>{IonSelectOption.name}</IonLabel>
                         <IonItem className='select1'>
-                            <IonSelect slot='start' interface="popover" interfaceOptions={options} ref={nombrePersInputRef} value={IonSelectOption}>
+                            <IonSelect className='slct' slot='start' interface="popover" interfaceOptions={options} ref={nombrePersInputRef} value={IonSelectOption}>
                                 <IonSelectOption value="1">1</IonSelectOption>
                                 <IonSelectOption value="2">2</IonSelectOption>
                                 <IonSelectOption value="3">3</IonSelectOption>

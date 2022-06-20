@@ -154,6 +154,8 @@ ion-range {
 
 }
 
+
+
 .select1 {
     color: #a99462;
     border: 2px solid #a99462;
@@ -175,8 +177,31 @@ ion-range {
 
 }
 
-.butplus {
+.slct1 {
+    padding-left: 35%;
+
+}
+
+.slct2 {
+    padding-left: 30%;
+
+}
+
+.slct {
+    /* align-items: center; */
+    padding-left: 40%;
+
+}
+
+#butv {
     border: solid 2px #a99462;
+    color: white;
+    background-color: #a99462;
+
+}
+
+.butplus {
+
     margin-left: 70%;
     margin-top: 0;
     background-color: white;

@@ -94,7 +94,7 @@ const Home: React.FC = () => {
 
         </IonGrid>
 
-        <p>{JSON.stringify(queryResults, null, 2)}</p>
+        {/* <p>{JSON.stringify(queryResults, null, 2)}</p> */}
       </IonContent>
     </IonPage >
   );
