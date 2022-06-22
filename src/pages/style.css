@@ -154,6 +154,11 @@ ion-range {
 
 }
 
+.list {
+    font-size: 250%;
+    border: solid 2px #a99462;
+    margin: -5%;
+}
 
 
 .select1 {
@@ -194,6 +199,27 @@ ion-range {
 }
 
 #butv {
+    border: solid 2px #a99462;
+    color: white;
+    background-color: #a99462;
+
+}
+
+#butv1 {
+    border: solid 2px #a99462;
+    color: white;
+    background-color: #a99462;
+
+}
+
+#butv2 {
+    border: solid 2px #a99462;
+    color: white;
+    background-color: #a99462;
+
+}
+
+#butv3 {
     border: solid 2px #a99462;
     color: white;
     background-color: #a99462;

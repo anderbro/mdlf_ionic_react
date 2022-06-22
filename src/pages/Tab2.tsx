@@ -1,7 +1,7 @@
 import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonGrid, IonDatetime, IonLabel, IonPopover, IonText, IonModal } from '@ionic/react';
 import './style.css';
 
-import { calendar } from 'ionicons/icons';
+import { business, busOutline, calendar } from 'ionicons/icons';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import React, { useRef, useState } from 'react';
 
@@ -16,6 +16,17 @@ const Home: React.FC = () => {
 
     const [popoverDate, setPopoverDate] = useState('');
     const [popoverDate2, setPopoverDate2] = useState('');
+
+
+    const tou = document.querySelector("#tou");
+    const tou2 = document.querySelector("#butv1");
+    const busi = document.querySelector("#busi");
+    const busi2 = document.querySelector("#butv");
+
+    const sexef = document.querySelector("#butf");
+    const sexeh = document.querySelector("#buth");
+    const sexeh1 = document.querySelector("#butv2");
+    const sexef1 = document.querySelector("#butv3")
 
     const formatDate = (value: string) => {
         return format(parseISO(value), 'MMM dd yyyy');
@@ -42,73 +53,48 @@ const Home: React.FC = () => {
     const [ca, setCa] = useState<number>();
     const [nombrePers, setNombrePers] = useState<String>();
     const [age, setAge] = useState<String>();
+    const [raison, setRaison] = useState<String>();
+    const [sexe, setSexe] = useState<String>();
 
 
 
-    // const CA = () => {
 
-    //     const valCa = caInputRef.current!.value;
-    //     const cafin = +valCa;
-    //     setCa(cafin);
-    // }
-
-    // const ChambreName = () => {
-
-    //     const valChambreName = chambreNameInputRef.current!.value;
-    //     setChambreName(valChambreName);
-    // }
-    // const PaysClient = () => {
-
-    //     const valPaysClient = paysClientInputRef.current!.value;
-    //     setPaysClient(valPaysClient);
-    // }
-
-    // const NombrePers = () => {
-    //     const valNombrePers = nombrePersInputRef.current!.value;
-    //     setNombrePers(valNombrePers);
-    // }
-
-    // const Age = () => {
-
-    //     const valAge = ageInputRef.current!.value;
-    //     setAge(valAge);
-    // }
-
-
-
-    const Sexe = () => {
-
-        const sexe1 = document.querySelector("#but1");
-        const sexe2 = document.querySelector("#but2");
-
-
-        if (sexe1?.getAttribute("id") == "but1") {
-
-            sexe2?.setAttribute("id", "but2")
-            sexe1?.setAttribute("id", "butv");
-        }
-
-        else if (sexe2?.getAttribute("id") == "but2") {
-
-            sexe1?.setAttribute("id", "but1");
-            sexe2?.setAttribute("id", "butv");
-        }
-
-        // sexe.style = "backgroundcolor:red;"
-        //garde la valeur du bouton sélectionné
-        // const bouton
-
-    }
 
     const Ajouter = () => {
         // quand on clique sur le plus, rajoute la meme ligne en dessous
 
     }
 
-    const Ajouter2 = () => {
-        const pro = document.querySelector("#busi");
 
-        pro?.setAttribute("id", "butv")
+
+
+    const Ajouter2 = () => {
+        if (busi?.getAttribute("id") && tou?.getAttribute("id")) {
+            busi?.setAttribute("id", "butv");
+            console.log("popo")
+
+        }
+        else {
+            busi2?.setAttribute("id", "busi");
+            setRaison("");
+
+        }
+
+        // setRaison("business");
+
+
+
+        // else if (busi?.getAttribute("id") == "butv") {
+        //     busi?.setAttribute("id", "busi");
+        //     tou?.setAttribute("id", "butv");
+        // }
+
+
+        // busi?.setAttribute("id", "butv");
+        // tou?.setAttribute("id", "butv");
+
+        // console.log(tou?.getAttribute("id"));
+        // console.log(busi?.getAttribute("id"));
 
         // var i=1;
         // while(i < nombrePers){
@@ -134,6 +120,65 @@ const Home: React.FC = () => {
         // que cette valeur,
         // 
     }
+
+
+
+    const Ajouter3 = () => {
+
+        if (tou?.getAttribute("id") && busi?.getAttribute("id")) {
+            tou?.setAttribute("id", "butv1");
+            // tou?.setAttribute("value", "tourisme");
+
+            // setRaison("tourisme");
+        }
+
+        else {
+            tou2?.setAttribute("id", "tou");
+            // tou2?.removeAttribute("value");
+            setRaison("");
+        }
+
+        setRaison("tourisme");
+    }
+
+    const Sexe = () => {
+        if (sexeh?.getAttribute("id") && sexef?.getAttribute("id")) {
+            // sexeh?.setAttribute("value", "H");
+            setSexe("H");
+            sexeh?.setAttribute("id", "butv2");
+
+        }
+        else {
+            sexeh1?.setAttribute("id", "buth");
+            sexeh1?.removeAttribute("value");
+            setSexe("");
+
+        }
+    }
+
+
+    const Sexe1 = () => {
+        // setSexe("F");
+        if (sexef?.getAttribute("id") && sexeh?.getAttribute("id")) {
+
+            sexef?.setAttribute("id", "butv3")
+            // sexef?.setAttribute("value", "F");
+            console.log("dljkdflkdflkfd");
+            // setSexe("F");
+
+
+        }
+        else {
+            setSexe("");
+            sexef1?.setAttribute("id", "butf");
+            // sexef1?.removeAttribute("value");
+            // setSexe("");
+        }
+    }
+
+
+
+
 
 
     const Infos = () => {
@@ -171,6 +216,7 @@ const Home: React.FC = () => {
             <IonContent >
 
                 <IonGrid>
+
 
 
 
@@ -239,10 +285,10 @@ const Home: React.FC = () => {
                     <p className='titre'>RAISON DU VOYAGE :</p>
                     <IonRow >
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter2} id="Busi" > Business</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter2} id="busi" > Business</IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter2} id="Tou" > Tourisme</IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" onClick={Ajouter3} id="tou" > Tourisme</IonButton>
                         </IonCol>
                     </IonRow>
                     <p className='titre'>PAYS DE RESIDENCE DU CLIENT</p>
@@ -286,15 +332,15 @@ const Home: React.FC = () => {
                             </IonItem>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" id="but1" onClick={Sexe} > H </IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" id="buth" onClick={Sexe} > H </IonButton>
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" id="but2" onClick={Sexe} > F </IonButton>
+                            <IonButton expand="full" color=" #a99462" className="but" id="butf" onClick={Sexe1} > F </IonButton>
                         </IonCol>
 
                     </IonRow>
 
-                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos}  > Valider {console.log(age, chambrename, paysClient, ca, nombrePers, popoverDate, popoverDate2)}</IonButton>
+                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos}  > Valider {console.log(age, chambrename, paysClient, ca, nombrePers, popoverDate, popoverDate2, raison, sexe)}</IonButton>
 
 
 

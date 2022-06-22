@@ -24,7 +24,7 @@ const Home: React.FC = () => {
 
 
 
-                <Link id="polit" to="/tab2">réservé au personnel </Link>
+                <Link id="polit" to="/tab3">réservé au personnel </Link>
             </IonContent>
         </IonPage >
     );

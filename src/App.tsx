@@ -27,6 +27,10 @@ import '@ionic/react/css/core.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { useCallback, useContext, useEffect } from 'react';
+
+
+
 
 setupIonicReact();
 

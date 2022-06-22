@@ -1,8 +1,9 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonItemDivider, IonTextarea } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonItemDivider, IonTextarea, IonImg, IonIcon } from '@ionic/react';
 import './style.css';
 
 
 import React, { useState } from 'react';
+import { atOutline, calendar, close, createOutline } from 'ionicons/icons';
 
 
 
@@ -11,67 +12,51 @@ import React, { useState } from 'react';
 
 
 const Home: React.FC = () => {
-  const [text, setText] = useState<string>();
-  const [value, setValue] = useState(0);
-  const [rangeValue, setRangeValue] = useState<{
-    lower: number;
-    upper: number;
-  }>({ lower: 0, upper: 0 });
+
+  const [items, setItems] = useState([{ id: 0, value: 'Item 0' }, { id: 1, value: 'Item 1' }]);
+
+  // const
 
 
+  //   var mysql = require('mysql');
+  //   var connection = mysql.createConnection({
+  //     host: 'localhost',
+  //     user: 'me',
+  //     password: 'secret',
+  //     database: 'my_db'
+  //   });
 
+  //   connection.connect();
 
-  const customFormatter = (value: number) => `${value}%`;
+  //   connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+  //     if (error) throw error;
+  //     console.log('The solution is: ', results[0].solution);
+  //   });
+
+  //   connection.end();
   return (
 
 
 
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>TextArea Examples</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonList>
-          <IonItemDivider>Default textarea</IonItemDivider>
-          <IonItem>
-            <IonTextarea value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
+        <IonImg id="mas1" src="/assets/Image/logo.png" />
+        <IonList className='list'>
+          Date : dklfjsldkf  Heure : sdqd
+          <IonIcon icon={createOutline} />
+          <IonIcon icon={close} slot="end" />
+          {/* onClick{() => handleDelet(data.item)}  */}
 
-          <IonItemDivider>Textarea in an item with a placeholder</IonItemDivider>
-          <IonItem>
-            <IonTextarea placeholder="Enter more information here..." value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
-
-          <IonItemDivider>Textarea in an item with a floating label</IonItemDivider>
-          <IonItem>
-            <IonLabel position="floating">Description</IonLabel>
-            <IonTextarea value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
-
-          <IonItemDivider>Disabled and readonly textarea in an item with a stacked label</IonItemDivider>
-          <IonItem>
-            <IonLabel position="stacked">Summary</IonLabel>
-            <IonTextarea
-              disabled
-              readonly
-              value={text} onIonChange={e => setText(e.detail.value!)}>
-            </IonTextarea>
-          </IonItem>
-
-          <IonItemDivider>Textarea that clears the value on edit</IonItemDivider>
-          <IonItem>
-            <IonLabel>Comment</IonLabel>
-            <IonTextarea clearOnEdit={true} value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
-
-          <IonItemDivider>Textarea with custom number of rows and cols</IonItemDivider>
-          <IonItem>
-            <IonLabel>Notes</IonLabel>
-            <IonTextarea rows={6} cols={20} placeholder="Enter any notes here..." value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
         </IonList>
+
+        {items.map(item => {
+          return (
+            <IonItem key={item.id}>
+              <IonLabel>{item.value}</IonLabel>
+            </IonItem>
+          )
+        })}
+
       </IonContent>
     </IonPage>
   );
