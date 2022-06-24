@@ -57,6 +57,10 @@ const Home: React.FC = () => {
         setTot(tot);
         setComm(com);
 
+
+
+        //ajouter toutes ces valeurs dans data
+        // + récuperer la date et l'heure actuelle.
     }
 
 

@@ -155,7 +155,7 @@ ion-range {
 }
 
 .list {
-    font-size: 250%;
+    font-size: 150%;
     border: solid 2px #a99462;
     margin: -5%;
 }
@@ -181,6 +181,18 @@ ion-range {
     align-items: flex-start;
 
 }
+
+
+.plus1 {
+
+    padding: auto;
+    margin-left: -110%;
+    width: 140%;
+    align-items: flex-start;
+
+}
+
+
 
 .slct1 {
     padding-left: 35%;
@@ -231,6 +243,7 @@ ion-range {
     margin-left: 70%;
     margin-top: 0;
     background-color: white;
+    border: 2px #a99462 solid;
 }
 
 .butval {
