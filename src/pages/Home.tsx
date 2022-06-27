@@ -13,55 +13,9 @@ const mSQLite = new SQLiteConnection(CapacitorSQLite);
 
 const Home: React.FC = () => {
 
-  const [database, setDatabase] = useState<any>(null);
-  const [queryResults, setQueryResults] = useState<any>(null);
-
-  //use to load  json into database
-  const loadJSON = () => {
-
-    mSQLite.importFromJson(JSON.stringify(jsonData))
-
-  }
 
 
 
-  //initialize <database></database>
-
-  // const initdb = async () => {
-
-  //   try {
-
-  //     const mSQLite = new SQLiteConnection(CapacitorSQLite);
-
-  //     const db: any = await mSQLite.createConnection(
-  //       "testdb", false, "no-encryption", 1);
-
-  //     setDatabase(db);
-  //     return db;
-  //   } catch (e) {
-  //     window.alert(JSON.stringify(e, null, 2));
-  //     return null;
-
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   initdb().then((db: any) => {
-  //     window.alert('initialized' + JSON.stringify(db, null, 2))
-  //     return loadJSON();
-  //   })
-  //     .then((jsonLoadResults: any) => {
-
-  //       window.alert(JSON.stringify(jsonLoadResults, null, 2));
-  //       database.open();
-  //       return database.query("SELECT * from CONTACTS;");
-  //     })
-
-  //     .then((queryResults: any) => {
-  //       setQueryResults(queryResults)
-  //     });
-
-  // }, [database]);
 
   return (
 
@@ -94,7 +48,6 @@ const Home: React.FC = () => {
 
         </IonGrid>
 
-        {/* <p>{JSON.stringify(queryResults, null, 2)}</p> */}
       </IonContent>
     </IonPage >
   );

@@ -1,43 +1,37 @@
-import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonGrid, IonDatetime, IonLabel, IonPopover, IonText, IonModal } from '@ionic/react';
+import { IonContent, IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonGrid, IonDatetime, IonLabel, IonPopover, IonText, IonModal, setupIonicReact } from '@ionic/react';
 import './style.css';
-
-import { business, busOutline, calendar, pulseSharp } from 'ionicons/icons';
 import { format, parseISO, getDate, getMonth, getYear, add } from 'date-fns';
 import React, { useRef, useState } from 'react';
 
-import { addOutline } from 'ionicons/icons';
+import { addOutline, calendar } from 'ionicons/icons';
 
 
 
 import { addClient } from '../services/data.services';
 
-import Tot from '../components/Tot';
-import Ajout from '../components/AjoutChambre';
 import AjoutChambre from '../components/AjoutChambre';
 import AjoutAge from '../components/AjoutAge';
+import ChoixDates from '../components/ChoixDates';
 
 
 
 
-// setupIonicReact();
+setupIonicReact();
 
 const Home: React.FC = () => {
 
 
-
-    const [popoverDate, setPopoverDate] = useState('');
-    const [popoverDate2, setPopoverDate2] = useState('');
-
+    // push les données de data2 vers la bd
 
     const tou = document.querySelector("#tou");
     const tou2 = document.querySelector("#butv1");
     const busi = document.querySelector("#busi");
     const busi2 = document.querySelector("#butv");
 
-    const sexef = document.querySelector("#butf");
-    const sexeh = document.querySelector("#buth");
-    const sexeh1 = document.querySelector("#butv2");
-    const sexef1 = document.querySelector("#butv3")
+    // const sexef = document.querySelector("#butf");
+    // const sexeh = document.querySelector("#buth");
+    // const sexeh1 = document.querySelector("#butv2");
+    // const sexef1 = document.querySelector("#butv3")
 
     const formatDate = (value: string) => {
         return format(parseISO(value), 'MMM dd yyyy');
@@ -48,14 +42,11 @@ const Home: React.FC = () => {
 
     }
 
-    const date1InputRef = useRef<HTMLIonDatetimeElement>(null);
-    const date2InputRef = useRef<HTMLIonDatetimeElement>(null);
     const caInputRef = useRef<HTMLIonInputElement>(null);
     const chambreNameInputRef = useRef<HTMLIonSelectElement>(null);
     const paysClientInputRef = useRef<HTMLIonSelectElement>(null);
     const nombrePersInputRef = useRef<HTMLIonSelectElement>(null);
     const ageInputRef = useRef<HTMLIonSelectElement>(null);
-    // const raisonInputRef = useRef<HTMLIonButtonElement>(null);
 
 
 
@@ -83,12 +74,7 @@ const Home: React.FC = () => {
     const AjouterAge = () => {
 
         setComponents1([...components1, "selecteur"])
-
-
-
     }
-
-
 
     const Raison = () => {
 
@@ -99,6 +85,12 @@ const Home: React.FC = () => {
 
 
 
+
+    const date1InputRef = useRef<HTMLIonDatetimeElement>(null);
+    const date2InputRef = useRef<HTMLIonDatetimeElement>(null);
+
+    const [popoverDate, setPopoverDate] = useState('');
+    const [popoverDate2, setPopoverDate2] = useState('');
 
 
 
@@ -124,7 +116,7 @@ const Home: React.FC = () => {
         // setCa(valCa);
 
 
-        addClient(popoverDate, popoverDate2, chambrename, raison, paysClient, nombrePers, age, sexe);
+        // addClient(popoverDate, popoverDate2, chambrename, raison, paysClient, nombrePers, age, sexe);
 
     }
 
@@ -147,10 +139,11 @@ const Home: React.FC = () => {
 
 
 
-
                     <IonImg id="mas1" src="/assets/Image/logo.png" />
 
                     <p className='titre1'>DURÉE DU SÉJOUR :</p>
+
+
 
 
                     <IonRow>
@@ -184,6 +177,11 @@ const Home: React.FC = () => {
                             </IonItem>
                         </IonCol>
                     </IonRow>
+
+
+                    {/* <ChoixDates></ChoixDates> */}
+
+
 
 
                     <p className='titre'>CA TOTAL DU CLIENT :</p>
@@ -290,7 +288,7 @@ const Home: React.FC = () => {
 
                     </IonRow>
 
-                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos} > Valider {console.log(age, sexe, paysClient, raison, nombrePers, chambrename, popoverDate, popoverDate2)}</IonButton>
+                    <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos} > Valider {console.log(popoverDate, popoverDate2)}</IonButton>
 
 
 
