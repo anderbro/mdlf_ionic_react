@@ -3,6 +3,8 @@ import { IonImg, IonPage, IonCol, IonGrid, IonContent, IonRange, IonTextarea, Io
 import { addNoteClient } from '../services/data_notes';
 import { Link } from 'react-router-dom';
 import { chevronBackOutline } from 'ionicons/icons';
+import { hoursToSeconds } from 'date-fns';
+import { minutesInHour } from 'date-fns/fp';
 
 
 
@@ -27,7 +29,8 @@ const Curseurs: React.FC = () => {
         const valRepas = +repasInputRef.current!.value;
         const valSpa = +spaInputRef.current!.value;
         const valactivites = +activitesInputRef.current!.value;
-
+        const datef = date.toString();
+        const heuref = hours.toString();
 
         const tot = +valChambre + +valSejour + +valRepas + +valSpa + +valactivites;
 
@@ -35,14 +38,20 @@ const Curseurs: React.FC = () => {
 
         setTot(tot);
 
-        console.log(text)
-        addNoteClient(valSejour, valChambre, valRepas, valSpa, valactivites, text);
+        // console.log(text)
+        addNoteClient(datef, heuref, valSejour, valChambre, valRepas, valSpa, valactivites, text);
 
 
 
         //ajouter toutes ces valeurs dans data
         // + récuperer la date et l'heure actuelle.
     }
+
+
+    // const currentTimeInMilliseconds = Date.now();
+    var d = new Date();
+    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
 
 
@@ -92,11 +101,13 @@ const Curseurs: React.FC = () => {
 
             <p className='com'> COMMENTAIRES ? </p>
 
-            <IonTextarea ref={commInputRef} value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
+            <IonTextarea ref={commInputRef} value={text} onIonChange={e => setText(e.detail.value!)}>
+
+            </IonTextarea>
 
             <div className='footer'>
                 <Link id="retour" to="/home">  <IonIcon slot="start" icon={chevronBackOutline} />  RETOUR</Link>
-                <IonButton expand="full" color=" #a99462" className="butval" onClick={Tot} routerLink={'/thanx'}> Valider   {console.log(tot)} </IonButton>
+                <IonButton expand="full" color=" #a99462" className="butval" onClick={Tot} routerLink="tab3"> Valider   {console.log(date, hours)} </IonButton>
                 <Link id="polit" to="/home">Politique de confidentialité </Link>
             </div>
 

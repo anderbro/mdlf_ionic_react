@@ -1,5 +1,7 @@
 
 export interface noteClient {
+    date: string;
+    heure: string;
     noteSejour: number;
     noteChambre: number;
     noteRepas: number;
@@ -14,16 +16,17 @@ export const getNoteClients = () => {
 }
 
 
-
 export const getNoteClient = (noteSejour: number) => {
     const noteClient = getNoteClients().find(x => x.noteSejour === noteSejour);
     return noteClient;
 }
 
-export const updateNoteClient = ({ noteSejour, noteChambre, noteRepas, noteAct, commentaire }: noteClient) => {
+export const updateNoteClient = ({ date, heure, noteSejour, noteChambre, noteRepas, noteAct, commentaire }: noteClient) => {
     const noteClients = getNoteClients();
     const noteClient = noteClients.find(x => x.noteSejour === noteSejour);
     if (noteClient) {
+        noteClient.date = date;
+        noteClient.heure = heure;
         noteClient.noteSejour = noteSejour;
         noteClient.noteChambre = noteChambre;
         noteClient.noteRepas = noteRepas;
@@ -33,29 +36,17 @@ export const updateNoteClient = ({ noteSejour, noteChambre, noteRepas, noteAct, 
     }
 }
 
-// export const deleteNoteClient = {
-//     noteSejour: number,
-//     noteChambre: number,
-//     noteRepas: number,
-//     noteSpa: number,
-//     noteAct: number,
-//     commentaire: string) => {
-//         const noteClient = {
-//             noteSejour,
-//             noteChambre,
-//             noteRepas,
-//             noteSpa,
-//             noteAct,
-//             commentaire
+export const deleteNoteClient = ({ date, heure, noteSejour, noteChambre, noteRepas, noteAct, commentaire }: noteClient) => {
 
-//         };
-//     const noteClients = getNoteClients();
-//     noteClients.push(noteClient);
-//     saveData2(noteClients)
-// }}
+    const noteClients = getNoteClients();
+    const noteClient = noteClients.splice
+    saveData2(noteClients)
+}
 
 
 export const addNoteClient = (
+    date: string,
+    heure: string,
     noteSejour: number,
     noteChambre: number,
     noteRepas: number,
@@ -63,6 +54,8 @@ export const addNoteClient = (
     noteAct: number,
     commentaire: string) => {
     const noteClient = {
+        date,
+        heure,
         noteSejour,
         noteChambre,
         noteRepas,

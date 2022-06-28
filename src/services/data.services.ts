@@ -1,7 +1,7 @@
-
 export interface Client {
     date: string;
     date2: string;
+    ca: number;
     nomch: string;
     raison: string;
     pays: string;
@@ -20,12 +20,13 @@ export const getClient = (nomch: string) => {
     return client;
 }
 
-export const updateClient = ({ date, date2, nomch, raison, pays, nbpers, age, sexe }: Client) => {
+export const updateClient = ({ date, date2, ca, nomch, raison, pays, nbpers, age, sexe }: Client) => {
     const clients = getClients();
     const client = clients.find(x => x.nomch === nomch);
     if (client) {
         client.date = date;
         client.date2 = date2;
+        client.ca = ca;
         client.nomch = nomch;
         client.raison = raison;
         client.pays = pays;
@@ -39,6 +40,7 @@ export const updateClient = ({ date, date2, nomch, raison, pays, nbpers, age, se
 export const addClient = (
     date: string,
     date2: string,
+    ca: number,
     nomch: string,
     raison: string,
     pays: string,
@@ -48,6 +50,7 @@ export const addClient = (
     const client = {
         date,
         date2,
+        ca,
         nomch,
         raison,
         pays,

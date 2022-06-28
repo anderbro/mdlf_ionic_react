@@ -1,8 +1,8 @@
-import { IonContent, IonButton, IonImg, IonPage, IonRange, IonIcon, IonTextarea, IonGrid, IonCol, RangeCustomEvent, IonTitle, IonAlert } from '@ionic/react';
+import { IonContent, IonImg, IonPage, IonGrid, IonAlert } from '@ionic/react';
 import './style.css';
 
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import Curseurs from '../components/Curseurs';
 
@@ -16,10 +16,8 @@ const Home: React.FC = () => {
         setError('');
     }
 
-    const sus = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const currentTimeInMilliseconds = Date.now();
 
-    }
     return (
 
 
@@ -33,6 +31,7 @@ const Home: React.FC = () => {
                     <IonImg id="mas1" src="/assets/Image/logo.png" />
 
                     <Curseurs></Curseurs>
+
 
                 </IonGrid>
             </IonContent>

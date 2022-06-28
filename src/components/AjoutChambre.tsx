@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { IonButton, IonItem, IonIcon, IonSelect, IonSelectOption, IonRow, IonCol, IonContent } from '@ionic/react';
-import { addOutline } from 'ionicons/icons';
+import { IonItem, IonSelect, IonSelectOption, IonRow, IonCol } from '@ionic/react';
 
 
 const AjoutChambre: React.FC = () => {

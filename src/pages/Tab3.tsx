@@ -4,14 +4,14 @@ import './style.css';
 
 import React, { useState } from 'react';
 import { closeOutline, createOutline } from 'ionicons/icons';
-import { noteClient, getNoteClients } from '../services/data_notes'
+import { noteClient, getNoteClients, deleteNoteClient } from '../services/data_notes'
 
 
 
 
 const Home: React.FC = () => {
   const [noteClients, setNoteClients] = useState<noteClient[]>([]);
-  const [showAddKidModal, setShowAddKidModal] = useState(false);
+  // const [showAddKidModal, setShowAddKidModal] = useState(false);
 
   useIonViewWillEnter(() => {
     const noteClients = getNoteClients();
@@ -24,7 +24,10 @@ const Home: React.FC = () => {
 
   const deletel = () => {
 
-    // prend en valeur la clée et supprime cette ligne
+    // const noteClienttelle = (po)
+    // deleteNoteClient(noteClienttelle)
+    // noteClients.delete()
+    // supprime cette ligne
     console.log(noteClients)
 
   }
@@ -43,7 +46,9 @@ const Home: React.FC = () => {
           <IonList className='gestion'>
             {noteClients.map((noteClient, n) => (
               <IonItem className='gestion2' key={n} > {/*routerLink={`/Tab2/`*/}
-                {noteClient.noteRepas}
+
+                <p className='date'  >Date : {noteClient.date}  </p>
+                <p className='date'>Heure : {noteClient.heure} </p>
                 <IonIcon slot={'end'} onClick={deletel} icon={closeOutline} color="red" />
                 <IonIcon slot={'end'} icon={createOutline} color="green" />
 

@@ -1,14 +1,13 @@
-import { IonContent, IonButton, IonImg, IonPage, IonGrid, useIonViewWillEnter } from '@ionic/react';
+import { IonContent, IonButton, IonImg, IonPage, IonGrid } from '@ionic/react';
 import './style.css';
-import React, { useEffect, useState } from 'react';
-import { Plugins, Capacitor } from "@capacitor/core";
+import React, { } from 'react';
+import { Plugins } from "@capacitor/core";
 import { SQLiteConnection } from "@capacitor-community/sqlite";
 
-import jsonData from './import-json';
 
-const { CapacitorSQLite } = Plugins;
+// const { CapacitorSQLite } = Plugins;
 
-const mSQLite = new SQLiteConnection(CapacitorSQLite);
+// const mSQLite = new SQLiteConnection(CapacitorSQLite);
 
 
 const Home: React.FC = () => {
@@ -29,7 +28,7 @@ const Home: React.FC = () => {
         <IonGrid>
           <IonImg id="mas2" src="/assets/Image/logo.png" />
 
-          {console.log("fdd")}
+          {/* {console.log("fdd")} */}
           <div className="bdsut">
 
             <p className='bjr'>Bonjour</p>
@@ -43,8 +42,6 @@ const Home: React.FC = () => {
 
 
           </div>
-
-
 
         </IonGrid>
 
