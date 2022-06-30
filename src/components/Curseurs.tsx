@@ -107,7 +107,7 @@ const Curseurs: React.FC = () => {
 
             <div className='footer'>
                 <Link id="retour" to="/home">  <IonIcon slot="start" icon={chevronBackOutline} />  RETOUR</Link>
-                <IonButton expand="full" color=" #a99462" className="butval" onClick={Tot} routerLink="tab3"> Valider   {console.log(date, hours)} </IonButton>
+                <IonButton expand="full" color=" #a99462" className="butval" onClick={Tot} routerLink="thanx"> Valider   {console.log(date, hours)} </IonButton>
                 <Link id="polit" to="/home">Politique de confidentialité </Link>
             </div>
 

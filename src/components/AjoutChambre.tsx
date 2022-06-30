@@ -4,15 +4,15 @@ import { IonItem, IonSelect, IonSelectOption, IonRow, IonCol } from '@ionic/reac
 
 const AjoutChambre: React.FC = () => {
 
-    const [components, setComponents] = useState<any>([]);
+    // const [components, setComponents] = useState<any>([]);
 
-    const AjouterChambre = () => {
+    // const AjouterChambre = () => {
 
-        setComponents([...components, "selecteur"])
+    //     setComponents([...components, "selecteur"])
 
 
 
-    }
+    // }
 
 
 
@@ -21,6 +21,7 @@ const AjoutChambre: React.FC = () => {
     return (
 
 
+        /* A component that is being rendered. */
         <IonRow className='plus1' id="plus">
             <IonCol>
                 <IonItem className='select'>

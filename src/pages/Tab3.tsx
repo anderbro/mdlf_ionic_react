@@ -19,16 +19,21 @@ const Home: React.FC = () => {
   }
   )
 
-  const [items, setItems] = useState([{ id: 0, value: 'Item 0' }, { id: 1, value: 'Item 1' }]);
 
+  var x = 0;
 
+  const xo = () => {
+    x = 1
+  }
   const deletel = () => {
 
-    // const noteClienttelle = (po)
-    // deleteNoteClient(noteClienttelle)
+
+    // const noteClienttelle = (key)
+    deleteNoteClient()
     // noteClients.delete()
     // supprime cette ligne
     console.log(noteClients)
+    return ("deleted")
 
   }
 
@@ -40,7 +45,7 @@ const Home: React.FC = () => {
 
         <IonImg id="mas1" src="/assets/Image/logo.png" />
 
-        {/* rendre fonctionnel le bouton delete,
+        {/* la fonction delete marche tres bien il suffit de l'associer au bouton delete,
         envoyer les données correspondantes */}
         {noteClients.length ? (
           <IonList className='gestion'>
@@ -48,11 +53,13 @@ const Home: React.FC = () => {
               <IonItem className='gestion2' key={n} > {/*routerLink={`/Tab2/`*/}
 
                 <p className='date'  >Date : {noteClient.date}  </p>
-                <p className='date'>Heure : {noteClient.heure} </p>
-                <IonIcon slot={'end'} onClick={deletel} icon={closeOutline} color="red" />
-                <IonIcon slot={'end'} icon={createOutline} color="green" />
+                <p className='date'>Heure : {noteClient.heure}  </p>
+
+                <IonButton slot={'end'} className="croixtab3" color="x" onClick={deletel}><IonIcon icon={closeOutline} /></IonButton>
+                <IonButton routerLink='tab2' slot={'end'} className="buttab3" color="x"> <IonIcon icon={createOutline} onClick={xo} /> </IonButton>
 
               </IonItem>
+
 
             ))}
 
@@ -62,7 +69,7 @@ const Home: React.FC = () => {
         )}
 
 
-        <IonButton expand="full" color=" #a99462" className="butval" routerLink='/home'> Accueil </IonButton>
+        <IonButton expand="full" color=" #a99462" className="butacc" routerLink='/home'> Accueil </IonButton>
 
       </IonContent>
     </IonPage>

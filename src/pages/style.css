@@ -3,6 +3,20 @@
 
 }
 
+:host(.button-solid) {
+    --background: white;
+}
+
+.buttab3 {
+    color: greenyellow;
+
+}
+
+.croixtab3 {
+    color: red;
+}
+
+
 .calendar {
 
     border: solid 2px #a99462;
@@ -241,10 +255,22 @@ ion-range {
 
 .butplus {
 
+    color: black;
     margin-left: 70%;
     margin-top: 0;
     background-color: white;
     border: 2px #a99462 solid;
+}
+
+.butacc {
+    background-color: white;
+    width: 50%;
+    color: #a99462;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid #a99462 1px;
+
 }
 
 .butval {

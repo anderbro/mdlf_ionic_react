@@ -5,7 +5,7 @@ import React, { useRef, useState } from 'react';
 import { addOutline, calendar } from 'ionicons/icons';
 import AjoutChambre from '../components/AjoutChambre';
 import AjoutAge from '../components/AjoutAge';
-import { addClient } from '../services/data.services';
+import { addClient } from '../services/data_clients';
 
 
 
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 
     const tou = document.querySelector("#tou");
     const tou2 = document.querySelector("#butv1");
-    const busi = document.querySelector("#busi");
+    // const busi = document.querySelector("#busi");
     const busi2 = document.querySelector("#butv");
 
     // const sexef = document.querySelector("#butf");
@@ -35,14 +35,16 @@ const Home: React.FC = () => {
         e.preventDefault();
 
     }
+    /* A way to get the value of the input. */
 
     const caInputRef = useRef<HTMLIonInputElement>(null);
     const chambreNameInputRef = useRef<HTMLIonSelectElement>(null);
     const paysClientInputRef = useRef<HTMLIonSelectElement>(null);
     const nombrePersInputRef = useRef<HTMLIonSelectElement>(null);
     const ageInputRef = useRef<HTMLIonSelectElement>(null);
+    const raisonInput = useRef<HTMLIonButtonElement>(null);
 
-
+    /* Setting the state of the component. */
 
     const [chambrename, setChambreName] = useState<string>('');
     const [paysClient, setPaysClient] = useState<string>('');
@@ -62,8 +64,11 @@ const Home: React.FC = () => {
         setComponents([...components, "selecteur"])
     }
 
+
     const AjouterAge = () => {
+
         setComponents1([...components1, "selecteur"])
+
     }
 
     const Raison = () => {
@@ -90,17 +95,17 @@ const Home: React.FC = () => {
         const valPaysClient = paysClientInputRef.current!.value;
         const valNombrePers = nombrePersInputRef.current!.value;
         const valAge = ageInputRef.current!.value;
-        const valRaison = busi
+        const valRaison = raisonInput.toString()
 
 
 
 
-
+        // setSexe();
         setAge(valAge);
         setNombrePers(valNombrePers);
         setPaysClient(valPaysClient);
         setChambreName(valChambreName);
-        setRaison('valRaison');
+        setRaison(valRaison);
         setCa(ca);
 
 
@@ -109,7 +114,7 @@ const Home: React.FC = () => {
     }
 
     const options = {
-        cssClass: 'my-custom-interface'
+        // cssClass: 'my-custom-interface'
 
     }
 
@@ -194,8 +199,8 @@ const Home: React.FC = () => {
 
                         </IonCol>
                         <IonCol>
-                            <IonButton className='butplus' color="light " onClick={AjouterChambre}><IonIcon slot='start' icon={addOutline}></IonIcon></IonButton>
-                            {components && components.length > 0 && components.map((key: number) => { return (<AjoutChambre></AjoutChambre>) })}
+                            <IonButton className='butplus' color="x" onClick={AjouterChambre}><IonIcon icon={addOutline}></IonIcon></IonButton>
+                            {components && components.length > 0 && components.map((key: number) => { console.log(key); return (<AjoutChambre></AjoutChambre>) })}
 
                         </IonCol>
 
@@ -215,11 +220,11 @@ const Home: React.FC = () => {
                     <p className='titre'>RAISON DU VOYAGE :</p>
                     <IonRow >
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={Raison} id='busi' defaultValue="business"> Business </IonButton>
+                            <IonButton expand="full" ref={raisonInput} color=" #a99462" className="but" onClick={Raison} id='busi' defaultValue="business"> Business </IonButton>
 
                         </IonCol>
                         <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" onClick={Raison} defaultValue="tourisme">  Tourisme</IonButton>
+                            <IonButton expand="full" ref={raisonInput} color=" #a99462" className="but" onClick={Raison} defaultValue="tourisme">  Tourisme</IonButton>
 
                         </IonCol>
 
@@ -251,33 +256,17 @@ const Home: React.FC = () => {
                             </IonSelect>
                         </IonItem>
                     </IonRow>
+
+
                     <p className='titre'>TRANCHES D’ÂGE(S) ET SEXE(S) :</p>
-                    <IonButton className='butplus' color="light " onClick={AjouterAge}><IonIcon slot='start' icon={addOutline}></IonIcon></IonButton>
-                    {components1 && components1.length > 0 && components1.map((key: number) => { return (<AjoutAge></AjoutAge>) })}
-
-                    <IonRow >
-                        <IonCol>
-                            <IonItem className='select2'>
-                                <IonSelect ref={ageInputRef} value={IonSelectOption} interface="popover" interfaceOptions={options}  >
-                                    <IonSelectOption value="18-30">18-30</IonSelectOption>
-                                    <IonSelectOption value="30-45">30-45</IonSelectOption>
-                                    <IonSelectOption value="45-60">45-60</IonSelectOption>
-                                    <IonSelectOption value="60-75">60-75</IonSelectOption>
-                                    <IonSelectOption value="75+">75+</IonSelectOption>
+                    <IonButton className='butplus' color="x" onClick={AjouterAge}><IonIcon icon={addOutline}></IonIcon></IonButton>
+                    {components1 && components1.length > 0 && components1.map((key: number) => { console.log(key); return (<AjoutAge></AjoutAge>) })}
 
 
-                                </IonSelect>
-                            </IonItem>
-                        </IonCol>
-                        <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" > H </IonButton>
-                        </IonCol>
-                        <IonCol>
-                            <IonButton expand="full" color=" #a99462" className="but" > F </IonButton>
-                        </IonCol>
 
-                    </IonRow>
+                    <AjoutAge></AjoutAge>
 
+                    {/* A button that calls the function Infos and then redirects to the home page.  */}
                     <IonButton expand="full" color=" #a99462" className="butval" onClick={Infos} routerLink="home" > Valider {console.log(popoverDate, popoverDate2)}</IonButton>
 
 

@@ -1,4 +1,4 @@
-import { IonContent, IonImg, IonPage, IonGrid, IonText } from '@ionic/react';
+import { IonContent, IonImg, IonPage, IonGrid, IonText, IonButton } from '@ionic/react';
 import { Link } from 'react-router-dom';
 import './style.css';
 
@@ -22,6 +22,7 @@ const Home: React.FC = () => {
                     </IonText>
                 </IonGrid>
 
+                <IonButton expand="full" color=" #a99462" className="butacc" routerLink='/home'> Accueil </IonButton>
 
 
                 <Link id="polit" to="/tab3">réservé au personnel </Link>

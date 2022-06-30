@@ -7,7 +7,6 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 
 import Tab3 from './pages/Tab3';
-import Tab4 from './pages/Tab4';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,7 +42,6 @@ const App: React.FC = () => (
         <Route exact path="/tab1" component={Tab1} />
         <Route exact path="/tab2" component={Tab2} />
         <Route exact path="/tab3" component={Tab3} />
-        <Route exact path="/tab4" component={Tab4} />
 
 
       </IonRouterOutlet>

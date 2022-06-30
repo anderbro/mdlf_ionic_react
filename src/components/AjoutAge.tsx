@@ -6,17 +6,14 @@ import { IonButton, IonImg, IonInput, IonPage, IonItem, IonIcon, IonSelect, IonS
 
 const AjoutAge: React.FC = () => {
 
-    const options = {
-        // cssClass: 'my-custom-interface'
 
-    }
     const ageInputRef = useRef<HTMLIonSelectElement>(null);
 
     return (
         <IonRow >
             <IonCol>
                 <IonItem className='select2'>
-                    <IonSelect ref={ageInputRef} value={IonSelectOption} interface="popover" interfaceOptions={options}  >
+                    <IonSelect ref={ageInputRef} value={IonSelectOption} interface="popover"  >
                         <IonSelectOption value="18-30">18-30</IonSelectOption>
                         <IonSelectOption value="30-45">30-45</IonSelectOption>
                         <IonSelectOption value="45-60">45-60</IonSelectOption>

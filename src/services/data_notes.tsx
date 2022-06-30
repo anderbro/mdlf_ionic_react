@@ -36,11 +36,12 @@ export const updateNoteClient = ({ date, heure, noteSejour, noteChambre, noteRep
     }
 }
 
-export const deleteNoteClient = ({ date, heure, noteSejour, noteChambre, noteRepas, noteAct, commentaire }: noteClient) => {
+export const deleteNoteClient = () => {
 
     const noteClients = getNoteClients();
-    const noteClient = noteClients.splice
-    saveData2(noteClients)
+    const x = 2;
+    const noteClient = noteClients.splice(1, 1);
+    saveData2(noteClient)
 }
 
 
